@@ -1,12 +1,23 @@
 package pageObject;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class register {
 
-	@FindBy(xpath = "/html/body/div[6]/div[1]/div[1]/div[2]/div[1]/ul/li[1]/a\"")
+	public WebDriver ldriver;
+
+	public register(WebDriver driver) {
+
+		ldriver = driver;
+
+		PageFactory.initElements(ldriver, this);
+	}
+
+	@FindBy(linkText = "Register")
 	WebElement regs;
 
 	@FindBy(id = "gender-male")
@@ -39,7 +50,7 @@ public class register {
 	@FindBy(id = "ConfirmPassword")
 	WebElement cnfpass;
 
-	@FindBy(id = "register-button")
+	@FindBy(name = "register-button")
 	WebElement regbtn;
 
 	public void regtbtn() {

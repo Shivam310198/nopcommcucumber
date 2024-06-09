@@ -26,12 +26,14 @@ public class steps {
 		WebDriverManager.edgedriver().setup();
 		driver = new EdgeDriver(options);
 
-		r = new register();
+		r = new register(driver);
 	}
 
 	@When("user open the URL")
-	public void user_open_the_url() {
+	public void user_open_the_url() throws InterruptedException {
 		driver.get("https://demo.nopcommerce.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
 	}
 
 	@When("user click on register")
@@ -72,8 +74,9 @@ public class steps {
 		r.cpass("123456");
 	}
 
-	@Then("user click on register button")
-	public void user_click_on_register_button1() {
+	@Then("user click on register button1")
+	public void user_click_on_register_button1() throws InterruptedException {
+		Thread.sleep(2000);
 		r.registerb();
 	}
 
